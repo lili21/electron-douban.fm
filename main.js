@@ -32,10 +32,13 @@ function createWindow() {
     // fullscreen: true,
     title: 'douban.fm',
     width: 1200,
+    height: 600,
     'web-preferences': { 'plugins': true }
   });
 
-  mainWindow.loadURL('http://douban.fm');
+  mainWindow.loadURL('file://' + __dirname + '/index.html');
+
+  // mainWindow.webContents.openDevTools();
 
   mainWindow.on('closed', function() {
     mainWindow = null;

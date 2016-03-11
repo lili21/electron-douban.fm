@@ -4,6 +4,17 @@
 
 ## 支持使用键盘来操控下一首与暂停播放功能
 
+## Usage
+
+```
+git clone https://github.com/lili21/electron-douban.fm.git
+cd electron-douban.fm
+npm install
+npm start
+```
+
+Have Fun.
+
 ## Todolist
 
 * 暂定播放功能需要完善

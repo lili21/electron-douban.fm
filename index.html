@@ -3,11 +3,17 @@
   <head>
     <meta charset="UTF-8">
     <title>豆瓣FM</title>
-    <script src="layout.js"></script>
+    <script src="onload.js"></script>
   </head>
   <body style="overflow:hidden">
+    <!-- We are using node <script>document.write(process.versions.node)</script>,
+    Chromium <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>. -->
+    
     <div id="webview-container" style="width: 1200px; height: 600px;">
-      <webview id="douban.fm" src="http://douban.fm/" style="width: 1200px; height: 600px;overflow:hidden;" plugins="true"></webview>
+      <webview id="douban.fm" src="http://douban.fm/" style="width: 1200px; height: 600px;overflow:hidden;" plugins="true" preload="./doubanfm.js"></webview>
     </div>
+    
   </body>
+
 </html>

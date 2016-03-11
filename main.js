@@ -4,6 +4,10 @@ const electron = require('electron');
 
 const app = electron.app;
 
+const globalShortcut = electron.globalShortcut;
+
+let mainWindow;
+
 app.commandLine.appendSwitch(
   'ppapi-flash-path',
   '/Applications/Google Chrome.app/Contents/Versions/48.0.2564.116/Google Chrome Framework.framework/Internet Plug-Ins/PepperFlash/PepperFlashPlayer.plugin'
@@ -11,7 +15,19 @@ app.commandLine.appendSwitch(
 
 app.commandLine.appendSwitch('ppapi-flash-version', '20.0.0.306');
 
-app.on('ready', createWindow);
+app.on('ready', function() {
+  globalShortcut.register('MediaNextTrack', function() {
+    // doubanTool.nextSong();
+    mainWindow.webContents.send('nextSong');
+  });
+
+  globalShortcut.register('MediaPlayPause', function() {
+    // doubanTool.playPause();
+    mainWindow.webContents.send('playPause');
+  });
+
+  createWindow();
+});
 
 app.on('window-all-closed', function() {
   if (process.platform !== 'darwin') {
@@ -25,7 +41,6 @@ app.on('activate', function() {
   }
 });
 
-let mainWindow;
 
 function createWindow() {
   mainWindow = new electron.BrowserWindow({

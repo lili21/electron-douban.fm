@@ -2,6 +2,8 @@
 
 const electron = require('electron');
 
+const ipcRenderer = electron.ipcRenderer;
+
 const app = electron.app;
 
 const globalShortcut = electron.globalShortcut;
@@ -17,16 +19,31 @@ app.commandLine.appendSwitch('ppapi-flash-version', '20.0.0.306');
 
 app.on('ready', function() {
   globalShortcut.register('MediaNextTrack', function() {
-    // doubanTool.nextSong();
+    // 下一首
     mainWindow.webContents.send('nextSong');
   });
 
   globalShortcut.register('MediaPlayPause', function() {
-    // doubanTool.playPause();
+    // 播放/暂停
     mainWindow.webContents.send('playPause');
   });
+  /*
+  globalShortcut.register('L', function() {
+    // 喜欢
+    mainWindow.webContents.send('like');
+  });
+
+  globalShortcut.register('T', function() {
+    // 垃圾桶
+    mainWindow.webContents.send('trash');
+  });*/
 
   createWindow();
+});
+
+app.on('will-quit', function() {
+  globalShortcut.unregisterAll();
+  ipcRenderer.removeAllListeners();
 });
 
 app.on('window-all-closed', function() {
@@ -53,7 +70,7 @@ function createWindow() {
 
   mainWindow.loadURL('file://' + __dirname + '/index.html');
 
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
   mainWindow.on('closed', function() {
     mainWindow = null;

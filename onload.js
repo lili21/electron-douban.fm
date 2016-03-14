@@ -12,6 +12,15 @@ onload = function() {
   ipcRenderer.on('playPause', function() {
     webview.executeJavaScript('doubanfm$.playPause()');
   });
+
+  ipcRenderer.on('like', function() {
+    webview.executeJavaScript('doubanfm$.like()');
+  });
+
+  ipcRenderer.on('trash', function() {
+    webview.executeJavaScript('doubanfm$.trash()');
+  });
+
   doLayout();
 };
 

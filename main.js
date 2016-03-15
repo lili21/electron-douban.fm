@@ -27,16 +27,16 @@ app.on('ready', function() {
     // 播放/暂停
     mainWindow.webContents.send('playPause');
   });
-  /*
-  globalShortcut.register('L', function() {
+
+  globalShortcut.register('Cmd + L', function() {
     // 喜欢
     mainWindow.webContents.send('like');
   });
 
-  globalShortcut.register('T', function() {
+  globalShortcut.register('Cmd + T', function() {
     // 垃圾桶
     mainWindow.webContents.send('trash');
-  });*/
+  });
 
   createWindow();
 });

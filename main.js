@@ -2,7 +2,7 @@
 
 const electron = require('electron');
 
-const ipcRenderer = electron.ipcRenderer;
+// const ipcRenderer = electron.ipcRenderer;
 
 const app = electron.app;
 
@@ -43,7 +43,7 @@ app.on('ready', function() {
 
 app.on('will-quit', function() {
   globalShortcut.unregisterAll();
-  ipcRenderer.removeAllListeners();
+  // ipcRenderer.removeAllListeners();
 });
 
 app.on('window-all-closed', function() {
@@ -62,15 +62,16 @@ app.on('activate', function() {
 function createWindow() {
   mainWindow = new electron.BrowserWindow({
     // fullscreen: true,
-    title: 'douban.fm',
     width: 1200,
     height: 600,
-    'web-preferences': { 'plugins': true }
+    'web-preferences': { 'plugins': true },
+    title: 'douban.fm',
+    icon: __dirname + '/douban-fm.png'
   });
 
   mainWindow.loadURL('file://' + __dirname + '/index.html');
 
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   mainWindow.on('closed', function() {
     mainWindow = null;

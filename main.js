@@ -32,11 +32,11 @@ app.on('ready', function() {
     // 喜欢
     mainWindow.webContents.send('like');
   });
-
+  /*
   globalShortcut.register('Cmd + T', function() {
     // 垃圾桶
     mainWindow.webContents.send('trash');
-  });
+  });*/
 
   createWindow();
 });

@@ -1,18 +1,17 @@
 'use strict';
 
-const electron = require('electron');
+var path = require('path');
+var electron = require('electron');
 
-// const ipcRenderer = electron.ipcRenderer;
+var app = electron.app;
 
-const app = electron.app;
+var globalShortcut = electron.globalShortcut;
 
-const globalShortcut = electron.globalShortcut;
-
-let mainWindow;
+var mainWindow;
 
 app.commandLine.appendSwitch(
   'ppapi-flash-path',
-  '/Applications/Google Chrome.app/Contents/Versions/48.0.2564.116/Google Chrome Framework.framework/Internet Plug-Ins/PepperFlash/PepperFlashPlayer.plugin'
+  path.join(__dirname, 'PepperFlashPlayer.plugin')
 );
 
 app.commandLine.appendSwitch('ppapi-flash-version', '20.0.0.306');

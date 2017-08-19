@@ -1,4 +1,4 @@
-# douban.fm on macOS
+# douban.fm
 
 ## Usage
 
